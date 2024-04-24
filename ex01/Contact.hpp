@@ -6,11 +6,12 @@
 /*   By: mzolfagh <mzolfagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 12:30:56 by mzolfagh          #+#    #+#             */
-/*   Updated: 2024/04/23 13:10:07 by mzolfagh         ###   ########.fr       */
+/*   Updated: 2024/04/24 13:35:09 by mzolfagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <string>
 
 class Contact
 {
@@ -31,5 +32,6 @@ public:
 	void    SetNname(std::string str);
 	void    SetSecret(std::string str);
 	void    SetPhone(std::string str);
+	std::string GiveInfo(int i);
 
 };

@@ -29,11 +29,11 @@ ${NAME}: ${OBJS}
 bonus: ${BONUS_OBJS}
 	${CC} ${CFLAGS} -o ${NAME} $^
 
-clean: 
-	${RM} ${OBJS} ${BONUS_OBJS}
+# clean: 
+# 	${RM} ${OBJS} ${BONUS_OBJS}
 
 
-fclean: clean
+fclean:
 	${RM} ${NAME} ${CHECK}
 
 re: fclean all

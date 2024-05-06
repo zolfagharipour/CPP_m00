@@ -15,6 +15,7 @@
 PhoneBook::PhoneBook(/* args */)
 {
     std::cout << "--Welcome to CRAPPY--" << std::endl;
+	this->_index = 0;
 }
 
 PhoneBook::~PhoneBook()
@@ -27,24 +28,31 @@ void    PhoneBook::AddContact(void)
     std::string str;
     
     std::cout << "Please enter the first name:" << std::endl;
-    std::cin >> str;
-    this->_contacts[this->_index % 8].SetFname(str);
+	std::getline(std::cin, str);
+	while (str == "")
+	{
+		std::getline(std::cin, str);
+	}
+	// std::cin >> str;
+    this->_contacts[this->_index].SetFname(str);
     
     std::cout << "Please enter the last name:" << std::endl;
-    std::cin >> str;
-    this->_contacts[this->_index % 8].SetLname(str);
+    std::getline(std::cin, str);
+    this->_contacts[this->_index].SetLname(str);
     
     std::cout << "Please enter the nickname:" << std::endl;
-    std::cin >> str;
-    this->_contacts[this->_index % 8].SetNname(str);
+    std::getline(std::cin, str);
+    this->_contacts[this->_index].SetNname(str);
 
     std::cout << "Please enter the darkest secret:" << std::endl;
-    std::cin >> str;
-    this->_contacts[this->_index % 8].SetSecret(str);
+    std::getline(std::cin, str);
+    this->_contacts[this->_index].SetSecret(str);
     
     std::cout << "Please enter the phone number:" << std::endl;
-    std::cin >> str;
-    this->_contacts[this->_index % 8].SetPhone(str);
+    std::getline(std::cin, str);
+    this->_contacts[this->_index].SetPhone(str);
+
+	this->_index = (this->_index + 1) % 8;
 }
 
 void	PhoneBook::_ShowContact(void)
@@ -85,14 +93,14 @@ void	PhoneBook::SearchContact(void)
 	
 	this->_ShowContact();
 	std::cout << "Please chose which contact you want to be displayed: ";
-	// std::cin >> index;
 	if (!(std::cin >> index) ||  index > 8 || index < 1)
 	{
 		std::cin.clear();
 		std::cout << "\nYou lost your chance of chosing right index." << std::endl;
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		return ;
 	}
-	
+	index --;
 	std::cout << "First Name: ";	
 	std::cout << this->_contacts[index].GiveInfo(0) << std::endl;
 	

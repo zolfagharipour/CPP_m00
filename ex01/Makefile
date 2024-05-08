@@ -6,7 +6,7 @@
 #    By: mzolfagh <mzolfagh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/22 12:06:03 by mzolfagh          #+#    #+#              #
-#    Updated: 2024/04/24 17:33:07 by mzolfagh         ###   ########.fr        #
+#    Updated: 2024/05/08 14:13:39 by mzolfagh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRCS =  Contact.cpp  main.cpp  PhoneBook.cpp
 
 OBJS = ${SRCS:.c=.o}
 
-CC = g++
+CC = c++
 CFLAGS = -Wall -Wextra -Werror -g -std=c++98
 RM	=	rm -rf
 

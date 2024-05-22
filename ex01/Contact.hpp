@@ -6,7 +6,7 @@
 /*   By: mzolfagh <mzolfagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 12:30:56 by mzolfagh          #+#    #+#             */
-/*   Updated: 2024/04/24 13:35:09 by mzolfagh         ###   ########.fr       */
+/*   Updated: 2024/05/21 14:55:00 by mzolfagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ private:
 	std::string     _PhoneNumber;
 
 public:
-	Contact(/* args */);
+	Contact();
 	~Contact();
 
 	

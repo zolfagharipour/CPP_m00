@@ -6,7 +6,7 @@
 #    By: mzolfagh <mzolfagh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/22 12:06:03 by mzolfagh          #+#    #+#              #
-#    Updated: 2024/05/08 14:13:35 by mzolfagh         ###   ########.fr        #
+#    Updated: 2024/05/21 14:49:10 by mzolfagh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,10 @@ NAME = megaphone
 
 SRCS =  megaphone.cpp
 
-OBJS = ${SRCS:.c=.o}
+OBJS = ${SRCS:.cpp=.o}
 
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -g -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM	=	rm -rf
 
 all: ${NAME}
@@ -26,15 +26,12 @@ all: ${NAME}
 ${NAME}: ${OBJS}
 	${CC} ${CFLAGS} -o ${NAME} $^
 
-bonus: ${BONUS_OBJS}
-	${CC} ${CFLAGS} -o ${NAME} $^
-
-# clean: 
-# 	${RM} ${OBJS} ${BONUS_OBJS}
+clean: 
+	${RM} ${OBJS} ${BONUS_OBJS}
 
 
-# fclean: clean
-# 	${RM} ${NAME} ${CHECK}
+fclean: clean
+	${RM} ${NAME} ${CHECK}
 
 re: fclean all
 

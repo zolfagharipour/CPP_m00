@@ -6,20 +6,18 @@
 /*   By: mzolfagh <mzolfagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 12:30:22 by mzolfagh          #+#    #+#             */
-/*   Updated: 2024/04/24 18:16:39 by mzolfagh         ###   ########.fr       */
+/*   Updated: 2024/05/22 13:43:28 by mzolfagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 
-Contact::Contact(/* args */)
+Contact::Contact()
 {
-    
 }
 
 Contact::~Contact()
 {
-    
 }
 
 void    Contact::SetFname(std::string str)
@@ -57,9 +55,9 @@ std::string Contact::GiveInfo(int i)
         case 2:
             return (this->_nname);
         case 3:
-            return (this->_PhoneNumber);
-        case 4:
             return (this->_secret);
+        case 4:
+            return (this->_PhoneNumber);
     }
     return (NULL);
 }

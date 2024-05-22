@@ -6,13 +6,13 @@
 /*   By: mzolfagh <mzolfagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 12:28:35 by mzolfagh          #+#    #+#             */
-/*   Updated: 2024/05/06 15:33:45 by mzolfagh         ###   ########.fr       */
+/*   Updated: 2024/05/22 13:43:07 by mzolfagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook(/* args */)
+PhoneBook::PhoneBook()
 {
     std::cout << "--Welcome to CRAPPY--" << std::endl;
 	this->_index = 0;
@@ -29,28 +29,68 @@ void    PhoneBook::AddContact(void)
     
     std::cout << "Please enter the first name:" << std::endl;
 	std::getline(std::cin, str);
+	if (std::cin.eof())
+		exit(1);
 	while (str == "")
 	{
+		std::cout << "Empty input are not accepted. Try again:" << std::endl;
 		std::getline(std::cin, str);
+		if (std::cin.eof())
+			exit(1);
 	}
-	// std::cin >> str;
     this->_contacts[this->_index].SetFname(str);
     
     std::cout << "Please enter the last name:" << std::endl;
     std::getline(std::cin, str);
+	if (std::cin.eof())
+		exit(1);
+	while (str == "")
+	{
+		std::cout << "Empty input are not accepted. Try again:" << std::endl;
+		std::getline(std::cin, str);
+		if (std::cin.eof())
+			exit(1);
+	}
     this->_contacts[this->_index].SetLname(str);
     
     std::cout << "Please enter the nickname:" << std::endl;
     std::getline(std::cin, str);
-    this->_contacts[this->_index].SetNname(str);
+	if (std::cin.eof())
+		exit(1);
+    while (str == "")
+	{
+		std::cout << "Empty input are not accepted. Try again:" << std::endl;
+		std::getline(std::cin, str);
+		if (std::cin.eof())
+			exit(1);
+	}
+	this->_contacts[this->_index].SetNname(str);
 
     std::cout << "Please enter the darkest secret:" << std::endl;
     std::getline(std::cin, str);
-    this->_contacts[this->_index].SetSecret(str);
+	if (std::cin.eof())
+		exit(1);
+    while (str == "")
+	{
+		std::cout << "Empty input are not accepted. Try again:" << std::endl;
+		std::getline(std::cin, str);
+		if (std::cin.eof())
+			exit(1);
+	}
+	this->_contacts[this->_index].SetSecret(str);
     
     std::cout << "Please enter the phone number:" << std::endl;
     std::getline(std::cin, str);
-    this->_contacts[this->_index].SetPhone(str);
+	if (std::cin.eof())
+		exit(1);
+    while (str == "")
+	{
+		std::cout << "Empty input are not accepted. Try again:" << std::endl;
+		std::getline(std::cin, str);
+		if (std::cin.eof())
+			exit(1);
+	}
+	this->_contacts[this->_index].SetPhone(str);
 
 	this->_index = (this->_index + 1) % 8;
 }
@@ -92,15 +132,31 @@ void	PhoneBook::SearchContact(void)
 	int			index = 0;
 	
 	this->_ShowContact();
-	std::cout << "Please chose which contact you want to be displayed: ";
-	if (!(std::cin >> index) ||  index > 8 || index < 1)
+	std::cout << "Please chose which contact you want to be displayed: " << std::endl;
+	std::getline(std::cin, str);
+	if (std::cin.eof())
+		exit(1);
+	index = stoi(str);
+	while (str == "")
+	{
+		std::cout << "Empty input are not accepted. Try again:" << std::endl;
+		std::getline(std::cin, str);
+		if (std::cin.eof())
+			exit(1);
+	}
+	if (!index ||  index > 8 || index < 1)
 	{
 		std::cin.clear();
 		std::cout << "\nYou lost your chance of chosing right index." << std::endl;
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		return ;
+		return;
 	}
 	index --;
+	if (this->_contacts[index].GiveInfo(0) == "")
+	{
+		std::cout << "This contact is empty." << std::endl;
+		return;
+	}
 	std::cout << "First Name: ";	
 	std::cout << this->_contacts[index].GiveInfo(0) << std::endl;
 	
@@ -114,7 +170,5 @@ void	PhoneBook::SearchContact(void)
 	std::cout << this->_contacts[index].GiveInfo(3) << std::endl;
 	
 	std::cout << "Phone Number: ";	
-	std::cout << this->_contacts[index].GiveInfo(4) << "\n" << std::endl;
-	
-	
+	std::cout << this->_contacts[index].GiveInfo(4) << "\n" << std::endl;	
 }
